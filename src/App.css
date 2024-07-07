@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+}
+
+.App .openModalBtn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  background-color: cornflowerblue;
+  color: white;
+  cursor: pointer;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+
+
+.search-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.search-form label {
+  margin-right: 5px;
+}
+
+.search-form input[type="text"] {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.search-form select {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.average-time-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  width: 80%;
+  max-width: 600px;
+  justify-content: space-between;
+}
+
+.average-time-section,
+.priority-time-section {
+  flex: 1;
+  text-align: center;
+}
+
+.average-time-section p,
+.priority-time-section p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.priority-time-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.priority-time-section ul li {
+  margin-bottom: 5px;
+}
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.pagination a, .pagination span {
+  margin: 0 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.pagination a {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
