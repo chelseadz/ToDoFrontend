@@ -1,10 +1,17 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import App from './App';
 import { fetchToDos, deleteToDo, doneToDo, fetchAllData } from './api';
 
+
 // Mock the API calls
-jest.mock('./api');
+jest.mock('./api', () => ({
+  fetchToDos: jest.fn(() => Promise.resolve([])),
+  deleteToDo: jest.fn(() => Promise.resolve()),
+  doneToDo: jest.fn(() => Promise.resolve()),
+  fetchAllData: jest.fn(() => Promise.resolve([])),
+}));
 
 test('renders ToDo App', async () => {
   fetchToDos.mockResolvedValue([]);

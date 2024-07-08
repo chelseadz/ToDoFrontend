@@ -43,6 +43,17 @@ const TableContainer = ({onDelete, onUpdate, onDone, data, sortDone, sortPriorit
     []
   )
 
+  const getBackgroundColor = (dueDate) => {
+    if (!dueDate) return "";
+    const currentDate = new Date();
+    const due = new Date(dueDate);
+    const diffInDays = Math.ceil((due - currentDate) / (1000 * 60 * 60 * 24));
+
+    if (diffInDays <= 7) return "red";
+    if (diffInDays <= 14) return "yellow";
+    return "green";
+  };
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -85,9 +96,13 @@ const TableContainer = ({onDelete, onUpdate, onDone, data, sortDone, sortPriorit
         <tbody {...getTableBodyProps()}>
           {rows.map(row => {
             prepareRow(row)
-            var date = new Date(row.original.dueDate).toLocaleDateString('es-MX');
+            const date = new Date(row.original.dueDate).toLocaleDateString('es-MX');
+            const backgroundColor = getBackgroundColor(row.original.dueDate);
+            const textDecoration = row.original.done ? "line-through" : "none";
             return (
-              <tr key={row.id} {...row.getRowProps()} >
+              <tr 
+              key={row.id} {...row.getRowProps()}
+              style={{ backgroundColor, textDecoration }} >
                 <td>
                   <input 
                   type="checkbox"

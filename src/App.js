@@ -20,7 +20,7 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
 
 
-  const [pageSize, setPageSize] = useState(10);
+  const pageSize = 10;
   const [pageNumber, setPageNumber] = useState(1);
   const [sortByDone, setSortByDone] = useState(false);
   const [sortByDate, setSortByDate] = useState(false);
@@ -118,7 +118,7 @@ function App() {
   useEffect(() => {
     loadToDos();
     loadAllData();
-  }, []);
+  });
 
   useEffect(() => {
     loadToDos();

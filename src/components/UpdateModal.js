@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import "../Modal.css";
-import { fetchToDo, updateToDo } from '../api';
+import { fetchToDo, updateToDo } from '../api.js';
 
 const UpdateModal = ({itemId, setOpenModal, onUpdate}) => {
 
