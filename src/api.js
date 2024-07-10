@@ -23,16 +23,15 @@ export const fetchToDos = async (
   doneFilter,
 ) => {
   const params = {
-    pageSize,
-    pageNumber,
-    sortByDone,
-    sortByDate,
+    pageSize: pageSize, 
+    pageNumber: pageNumber,
+    sortByDone: sortByDone,
+    sortByDate: sortByDate,
     sortByPrior: sortByPriority, 
-    filterName: nameFilter,      
-    filterPriority: priorityFilter, 
-    filterDone: doneFilter         
+    nameFilter: nameFilter,      
+    priorityFilter: priorityFilter, 
+    doneFilter: doneFilter         
   };
-
   const { data } =  await axios.get(API_URL,{params})
   return data;
 };

@@ -65,69 +65,75 @@ const TableContainer = ({onDelete, onUpdate, onDone, data, sortDone, sortPriorit
 
   return (
     <div className="container">
-      <table {...getTableProps()}>
+      <table {...getTableProps()} className="styled-table">
         <thead>
           <tr>
-            <th>Done
+            <th className="table-header">
+              Done
               <input
-              type="checkbox"
-              name="done"
-              onChange={(e) => handleChange(e)}/>
+                type="checkbox"
+                name="done"
+                onChange={(e) => handleChange(e)}
+                className="checkbox"
+              />
             </th>
-            <th>Name</th>
-            <th>
+            <th className="table-header">Name</th>
+            <th className="table-header">
               Priority
               <input
-              type="checkbox"
-              name="priority"
-              onChange={(e) => handleChange(e)}/>
+                type="checkbox"
+                name="priority"
+                onChange={(e) => handleChange(e)}
+                className="checkbox"
+              />
             </th>
-            <th>
+            <th className="table-header">
               Due Date
               <input
-              type="checkbox"
-              name="dueDate"
-              onChange={(e) => handleChange(e)}/>
+                type="checkbox"
+                name="dueDate"
+                onChange={(e) => handleChange(e)}
+                className="checkbox"
+              />
             </th>
           </tr>
-
         </thead>
-
         <tbody {...getTableBodyProps()}>
           {rows.map(row => {
-            prepareRow(row)
+            prepareRow(row);
             const date = new Date(row.original.dueDate).toLocaleDateString('es-MX');
             const backgroundColor = getBackgroundColor(row.original.dueDate);
-            const textDecoration = row.original.done ? "line-through" : "none";
+            const textDecoration = row.original.done ? 'line-through' : 'none';
             return (
-              <tr 
-              key={row.id} {...row.getRowProps()}
-              style={{ backgroundColor, textDecoration }} >
-                <td>
-                  <input 
-                  type="checkbox"
-                  name="setDone" 
-                  value={row.original.id} 
-                  checked={row.original.done} 
-                  onChange={(e) => handleChange(e)}>
-                  </input>
+              <tr
+                key={row.id} {...row.getRowProps()}
+                style={{ backgroundColor, textDecoration }}
+                className="table-row"
+              >
+                <td className="table-cell">
+                  <input
+                    type="checkbox"
+                    name="setDone"
+                    value={row.original.id}
+                    checked={row.original.done}
+                    onChange={(e) => handleChange(e)}
+                  />
                 </td>
-                <td >
+                <td className="table-cell">
                   {row.original.text}
                 </td>
-                <td >
+                <td className="table-cell">
                   {row.original.priority}
                 </td>
-                <td >
-                  {(row.original.dueDate) ? date : ''}
+                <td className="table-cell">
+                  {row.original.dueDate ? date : ''}
                 </td>
-                <td>
+                <td className="table-cell">
                   <button onClick={() => onUpdate(row.original.id)}>Edit</button>
                   <button onClick={() => onDelete(row.original.id)}>Delete</button>
                 </td>
               </tr>
-            )
-
+            );
           })}
         </tbody>
       </table>

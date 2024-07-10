@@ -13,7 +13,6 @@ const Filters = ({ onSearch }) => {
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
-      <div><title>Filters</title></div>
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input
@@ -53,9 +52,10 @@ const Filters = ({ onSearch }) => {
           <option value="done">Done</option>
           <option value="undone">Undone</option>
         </select>
+
+      <button type="submit">Search</button>
       </div>
       
-      <button type="submit">Search</button>
     </form>
   );
 };

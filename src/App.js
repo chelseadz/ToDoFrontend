@@ -118,11 +118,7 @@ function App() {
   useEffect(() => {
     loadToDos();
     loadAllData();
-  });
-
-  useEffect(() => {
-    loadToDos();
-  }, [pageSize, pageNumber, sortByDone, sortByDate, sortByPriority, nameFilter, priorityFilter, doneFilter]); // Trigger load on dependencies change
+  },[pageSize, pageNumber, sortByDone, sortByDate, sortByPriority, nameFilter, priorityFilter, doneFilter]);
 
 
   return(
@@ -131,10 +127,12 @@ function App() {
 
       <Filters onSearch={handleSearch}></Filters>
 
+      <div className='newtask-container'>
       <button className="openModalBtn"
         onClick={() => {
           setModalOpen(true);
         }}> Create To Do </button>
+      </div>
 
       {modalOpen && 
       <CreateToDoModal

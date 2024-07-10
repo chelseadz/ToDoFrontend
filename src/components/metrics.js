@@ -47,14 +47,14 @@ function Metrics({ todos, setterPages, pageSize}) {
     <div class="average-time-container">
     <div class="average-time-section">
         <p>Average time to finish tasks:</p>
-        <strong> {(averageLow+averageMed+averageHigh)/3} minutes</strong>
+        <strong> {((averageLow+averageMed+averageHigh)/3).toFixed(5)} minutes</strong>
     </div>
     <div class="priority-time-section">
         <p>Average time to finish tasks by priority:</p>
         <ul>
-            <li>Low: {k>0 ? averageLow/k : 0} mins</li>
-            <li>Medium: {j>0 ? averageMed/j : 0} mins</li>
-            <li>High: {i>0 ? averageHigh/i : 0} mins</li>
+            <li>Low: {k>0 ? (averageLow/k).toFixed(5) : 0} mins</li>
+            <li>Medium: {j>0 ? (averageMed/j).toFixed(5) : 0} mins</li>
+            <li>High: {i>0 ? (averageHigh/i).toFixed(5) : 0} mins</li>
         </ul>
     </div>
 </div>
