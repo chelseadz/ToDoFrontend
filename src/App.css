@@ -9,12 +9,12 @@
 }
 
 .App .openModalBtn {
-  width: 200px;
+  width: 150px;
   height: 40px;
   border: none;
-  border-radius: 6px;
+  border-radius: 3px;
   align-items: left;
-  background-color: rgb(122, 59, 37);
+  background-color: rgb(254, 148, 109);
   color: white;
   cursor: pointer;
 

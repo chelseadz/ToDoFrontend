@@ -131,7 +131,7 @@ function App() {
       <button className="openModalBtn"
         onClick={() => {
           setModalOpen(true);
-        }}> Create To Do </button>
+        }}> + New To Do </button>
       </div>
 
       {modalOpen && 

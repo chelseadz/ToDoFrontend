@@ -27,7 +27,7 @@ export const fetchToDos = async (
     pageNumber: pageNumber,
     sortByDone: sortByDone,
     sortByDate: sortByDate,
-    sortByPrior: sortByPriority, 
+    sortByPriority: sortByPriority, 
     nameFilter: nameFilter,      
     priorityFilter: priorityFilter, 
     doneFilter: doneFilter         
