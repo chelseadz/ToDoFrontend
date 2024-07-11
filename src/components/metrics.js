@@ -2,7 +2,7 @@ import React from 'react';
 
 function Metrics({ todos, setterPages, pageSize}) {
 
-  var averageLow= 0, averageMed=0, averageHigh=0, i=0, j=0,k=0;
+  var averageAll = 0, averageLow= 0, averageMed=0, averageHigh=0, i=0, j=0,k=0;
   var total = 0;
   const calcTime = (fecha1, fecha2) =>{
     const date1 = new Date(fecha1);
@@ -17,27 +17,33 @@ function Metrics({ todos, setterPages, pageSize}) {
     return diferenciaMinutos;
   }
 
+  const formatMinutes = (minutes) => {
+    var seg = parseFloat("0." + (minutes+"").split(".")[1]) * 60
+    if (seg <10){
+      return Math.floor(minutes)+":0"+Math.floor(seg)
+    }else{
+      return Math.floor(minutes)+":"+Math.floor(seg)
+    }
+  }
+
   for(const idx in todos){
     total = total+1;
     if(todos[idx].doneDate != null){
       if(todos[idx].priority === "HIGH"){
-        var time = calcTime(todos[idx].creationDate, todos[idx].doneDate)
-        averageHigh += time
+        averageHigh += calcTime(todos[idx].creationDate, todos[idx].doneDate)
         i+=1
       }
 
       if(todos[idx].priority === "MEDIUM"){
-        var time1 = calcTime(todos[idx].creationDate, todos[idx].doneDate)
-        averageMed += time1
+        averageMed += calcTime(todos[idx].creationDate, todos[idx].doneDate)
         j+=1
       }
 
       if(todos[idx].priority === "LOW"){
-        var time2 = calcTime(todos[idx].creationDate, todos[idx].doneDate)
-        averageLow += time2
+        averageLow += calcTime(todos[idx].creationDate, todos[idx].doneDate)
         k+=1
       }
-
+      averageAll+=calcTime(todos[idx].creationDate, todos[idx].doneDate)
     }
   }
   
@@ -47,14 +53,14 @@ function Metrics({ todos, setterPages, pageSize}) {
     <div class="average-time-container">
     <div class="average-time-section">
         <p>Average time to finish tasks:</p>
-        <strong> {((averageLow+averageMed+averageHigh)/3).toFixed(5)} minutes</strong>
+        <strong> {formatMinutes(averageAll/(i+j+k))} minutes</strong>
     </div>
     <div class="priority-time-section">
         <p>Average time to finish tasks by priority:</p>
         <ul>
-            <li>Low: {k>0 ? (averageLow/k).toFixed(5) : 0} mins</li>
-            <li>Medium: {j>0 ? (averageMed/j).toFixed(5) : 0} mins</li>
-            <li>High: {i>0 ? (averageHigh/i).toFixed(5) : 0} mins</li>
+            <li>Low: {k>0 ? formatMinutes(averageLow/k) : 0} mins</li>
+            <li>Medium: {j>0 ? formatMinutes(averageMed/j) : 0} mins</li>
+            <li>High: {i>0 ? formatMinutes(averageHigh/i) : 0} mins</li>
         </ul>
     </div>
 </div>
